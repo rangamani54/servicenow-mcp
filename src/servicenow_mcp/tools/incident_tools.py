@@ -104,6 +104,8 @@ def create_incident(
         Response with the created incident details.
     """
     api_url = f"{config.api_url}/table/incident"
+    logging.info(f"___________________________{config.api_url}__________________________________")
+    
 
     # Build request data
     data = {
