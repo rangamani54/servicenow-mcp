@@ -29,6 +29,7 @@ class CreateIncidentParams(BaseModel):
     urgency: Optional[str] = Field(None, description="Urgency of the incident")
     assigned_to: Optional[str] = Field(None, description="User assigned to the incident")
     assignment_group: Optional[str] = Field(None, description="Group assigned to the incident")
+    cmdb_ci: Optional[str] = Field(None, description="CMDB ci"
 
 
 class UpdateIncidentParams(BaseModel):
