@@ -29,7 +29,7 @@ class CreateIncidentParams(BaseModel):
     urgency: Optional[str] = Field(None, description="Urgency of the incident")
     assigned_to: Optional[str] = Field(None, description="User assigned to the incident")
     assignment_group: Optional[str] = Field(None, description="Group assigned to the incident")
-    cmdb_ci: Optional[str] = Field(None, description="CMDB ci"
+    cmdb_ci: Optional[str] = Field(None, description="CMDB ci")
 
 
 class UpdateIncidentParams(BaseModel):
@@ -130,6 +130,8 @@ def create_incident(
         data["assigned_to"] = params.assigned_to
     if params.assignment_group:
         data["assignment_group"] = params.assignment_group
+    if params.cmdb_ci:
+        data["cmdb_ci"] = params.cmdb_ci
 
     # Make request
     try:
