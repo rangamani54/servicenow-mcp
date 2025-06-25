@@ -87,7 +87,7 @@ class IncidentResponse(BaseModel):
     incident_number: Optional[str] = Field(None, description="Number of the affected incident")
 
 
-def create_incident(
+def create_incident_servicenow(
     config: ServerConfig,
     auth_manager: AuthManager,
     params: CreateIncidentParams,
