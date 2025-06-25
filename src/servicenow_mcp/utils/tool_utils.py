@@ -127,7 +127,7 @@ from servicenow_mcp.tools.incident_tools import (
     add_comment as add_comment_tool,
 )
 from servicenow_mcp.tools.incident_tools import (
-    create_incident as create_incident_tool,
+    create_incident_servicenow as create_incident_servicenow_tool,
 )
 from servicenow_mcp.tools.incident_tools import (
     list_incidents as list_incidents_tool,
