@@ -41,7 +41,7 @@ from servicenow_mcp.tools.changeset_tools import (
 )
 from servicenow_mcp.tools.incident_tools import (
     add_comment,
-    create_incident,
+    create_incident_servicenow,
     list_incidents,
     resolve_incident,
     update_incident,
