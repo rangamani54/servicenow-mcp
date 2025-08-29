@@ -45,6 +45,7 @@ from servicenow_mcp.tools.incident_tools import (
     list_incidents,
     resolve_incident,
     update_incident,
+    get_incident_by_number,
 )
 from servicenow_mcp.tools.knowledge_base import (
     create_article,
@@ -122,6 +123,7 @@ __all__ = [
     "add_comment",
     "resolve_incident",
     "list_incidents",
+    "get_incident_by_number",
     
     # Catalog tools
     "list_catalog_items",
@@ -135,7 +137,7 @@ __all__ = [
     "create_catalog_item_variable",
     "list_catalog_item_variables",
     "update_catalog_item_variable",
-    
+
     # Change management tools
     "create_change_request",
     "update_change_request",
@@ -145,7 +147,7 @@ __all__ = [
     "submit_change_for_approval",
     "approve_change",
     "reject_change",
-    
+
     # Workflow management tools
     "list_workflows",
     "get_workflow_details",
@@ -159,7 +161,7 @@ __all__ = [
     "update_workflow_activity",
     "delete_workflow_activity",
     "reorder_workflow_activities",
-    
+
     # Changeset tools
     "list_changesets",
     "get_changeset_details",
@@ -168,14 +170,14 @@ __all__ = [
     "commit_changeset",
     "publish_changeset",
     "add_file_to_changeset",
-    
+
     # Script Include tools
     "list_script_includes",
     "get_script_include",
     "create_script_include",
     "update_script_include",
     "delete_script_include",
-    
+
     # Knowledge Base tools
     "create_knowledge_base",
     "list_knowledge_bases",
@@ -186,7 +188,7 @@ __all__ = [
     "publish_article",
     "list_articles",
     "get_article",
-    
+
     # User management tools
     "create_user",
     "update_user",
@@ -205,7 +207,7 @@ __all__ = [
     "list_story_dependencies",
     "create_story_dependency",
     "delete_story_dependency",
-    
+
     # Epic tools
     "create_epic",
     "update_epic",
@@ -221,10 +223,10 @@ __all__ = [
     "update_project",
     "list_projects",
 
-    
+
     # Future tools
     # "create_problem",
     # "update_problem",
     # "create_request",
     # "update_request",
-] 
+]
