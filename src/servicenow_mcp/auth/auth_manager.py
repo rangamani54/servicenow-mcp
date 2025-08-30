@@ -22,7 +22,7 @@ class AuthManager:
     Basic, API key, or OAuth authentication.
     """
 
-    def __init__(self, config: AuthConfig, instance_url: str = None):
+    def __init__(self, config: AuthConfig, instance_url: Optional[str] = None):
         """
         Initialize the authentication manager.
 
@@ -33,7 +33,7 @@ class AuthManager:
         self.config = config
         self.instance_url = instance_url
         self.token: Optional[str] = None
-        self.token_type: str = None
+        self.token_type: Optional[str] = None  # Fixed: Should be Optional[str]
         self.refresh_token: Optional[str] = None
         self.expires_at: float = 0  # epoch timestamp
         self.refresh_token_expires_at: float = 0  # refresh token expiry
@@ -107,6 +107,7 @@ class AuthManager:
                 "grant_type": "refresh_token",
                 "refresh_token": self.refresh_token,
             }
+            logger.info("Using refresh token for OAuth")
         else:
             # Use password grant if no valid refresh token
             if not oauth_config.username or not oauth_config.password:
@@ -119,9 +120,10 @@ class AuthManager:
             # Clear expired refresh token
             self.refresh_token = None
             self.refresh_token_expires_at = 0
+            logger.info("Using password grant for OAuth")
 
         try:
-            response = requests.post(token_url, headers=headers, data=data)
+            response = requests.post(token_url, headers=headers, data=data, timeout=30)
             response.raise_for_status()
             token_data = response.json()
 
@@ -148,7 +150,7 @@ class AuthManager:
             logger.error(f"Failed to get OAuth token: {e}")
             raise ValueError(f"Failed to get OAuth token: {e}")
 
-    def refresh_token_if_needed(self):
+    def refresh_token_method(self):  # Fixed: Renamed to avoid conflict
         """Force refresh if using OAuth authentication."""
         if self.config.type == AuthType.OAUTH:
             if not self.token or time.time() >= self.expires_at:
